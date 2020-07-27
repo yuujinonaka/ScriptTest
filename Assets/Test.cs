@@ -10,22 +10,21 @@ public class Boss
     // 魔法用の関数
     public void Magic(int mppoint)
     {
-        //魔法を10回消費
-        for(int i = 0; i<10; i++)
+
+        //現在のmpが消費mp以上の場合
+        if (mp>=mppoint)
         {
+            //mp消費
             this.mp -= mppoint;
             Debug.Log("魔法攻撃をした。残りMPは" + mp);
         }
-
-        //MPが足りない為魔法が使えない
-        if (mp<5)
+        //現在のmpが消費mp以下の場合
+        else
         {
             Debug.Log("MPが足りない");
         }
-       
         
     }
-
    
 
 }
@@ -67,9 +66,14 @@ public class Test : MonoBehaviour
         Boss lastboss = new Boss();
 
         // 魔法用の関数を呼び出す
-        lastboss.Magic(5);
-      
-
+        
+       for(int i = 0; i <11; i++)
+        {
+            lastboss.Magic(5);
+            
+        }
+        
+        
     }
 
     // Update is called once per frame
